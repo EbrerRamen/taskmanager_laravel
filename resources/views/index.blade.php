@@ -31,9 +31,17 @@
                     {{ $task->title }} <!-- Task tiitle --> 
                 </button>
             <form>
-                
+
             <!-- Form to delete a task -->
+             <form action="{{ route('tasks.destroy'), $task->id }}" method="POST">
+                @csrf 
+                @method('DELETE') <!-- DELETE method -->
+                <button type="submit" class="text-red-500 hover:text-red-700">🗑</button>
+            </form>
+            </li>
+            @endforeach
         </ul>
     </div>
 </body>
+</html>
 
