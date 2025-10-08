@@ -32,6 +32,13 @@
                 </button>
             </form>
 
+            <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+                @csrf 
+                @method('PATCH')
+                <input type="text" name="title" value="{{ $task->title }}" required>
+                <button type="submit">Update</button>
+            </form>
+
             <!-- Form to delete a task -->
              <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Delete this task?')">
                 @csrf 
