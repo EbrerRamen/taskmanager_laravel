@@ -28,9 +28,23 @@ class TaskController extends Controller
         return redirect()->back(); // Redirect back to the task list page
     }
 
-    // Toggle task completion (complete/incomplete)
-    public function update(Task $task) {
-        // Flip the is_completed value
+    // Show edit form
+    public function edit(Task $task)
+    {
+        return view('tasks.edit', compact('task'));
+    }
+
+    // Update task title
+    public function update(Request $request, Task $task)
+    {
+        // if title is present, update title
+        if ($request->has('title')) {
+            $request->validate(['title' => 'required|string|max:255']);
+            $task->update(['title' => $request->title]);
+            return redirect('/')->with('success', 'Task updated successfully');
+        }
+
+        // Otherwise, toggle completion
         $task->update([
             'is_completed' => !$task->is_completed
         ]);
