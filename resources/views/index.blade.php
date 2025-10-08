@@ -16,7 +16,24 @@
             <input type="text" name="title" placeholder="Enter new task"
             class="flex-grow border border-gray-300 p-2 rouded-l" required>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r">Add</button>
-</form>
-</div>
+        </form>
+
+        <!-- Display list of tasks -->
+         <ul>
+            @foreach ($tasks as $task)
+            <li class="flex justify-between items-center border-b py-2">
+
+            <!-- Form to toggle task completion -->
+             <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+                @csrf 
+                @method('PATCH') <!-- PATCH method for updating -->
+                <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : '' }}">
+                    {{ $task->title }} <!-- Task tiitle --> 
+                </button>
+            <form>
+                
+            <!-- Form to delete a task -->
+        </ul>
+    </div>
 </body>
 
