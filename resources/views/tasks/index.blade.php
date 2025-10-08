@@ -30,10 +30,10 @@
                 <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : '' }}">
                     {{ $task->title }} <!-- Task tiitle --> 
                 </button>
-            <form>
+            </form>
 
             <!-- Form to delete a task -->
-             <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
+             <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Delete this task?')">
                 @csrf 
                 @method('DELETE') <!-- DELETE method -->
                 <button type="submit" class="text-red-500 hover:text-red-700">🗑</button>
