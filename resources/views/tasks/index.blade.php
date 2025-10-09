@@ -34,7 +34,7 @@
              <form action="{{ route('tasks.update', $task->id) }}" method="POST">
                 @csrf 
                 @method('PATCH') <!-- PATCH method for updating -->
-                <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : '' }}">
+                <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : 'hover:text-blue-600' }}">
                     {{ $task->title }} <!-- Task tiitle --> 
                 </button>
             </form>
