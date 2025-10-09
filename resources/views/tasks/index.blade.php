@@ -39,10 +39,14 @@
                 </button>
             </form>
 
-            <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+            <!-- Right-side buttons -->
+            <div class="flex items-center space-x-2">
+
+            <!-- Inline edit form -->
+            <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="flex items-center space-x-2">
                 @csrf 
                 @method('PATCH')
-                <input type="text" name="title" value="{{ $task->title }}" required>
+                <input type="text" name="title" value="{{ $task->title }}" class="border border-gray-300 p-1 rounded text-sm w-32" required>
                 <button type="submit">Update</button>
             </form>
 
@@ -52,6 +56,7 @@
                 @method('DELETE') <!-- DELETE method -->
                 <button type="submit" class="text-red-500 hover:text-red-700">🗑</button>
             </form>
+            </div>
             </li>
             @endforeach
         </ul>
