@@ -47,14 +47,14 @@
                 @csrf 
                 @method('PATCH')
                 <input type="text" name="title" value="{{ $task->title }}" class="border border-gray-300 p-1 rounded text-sm w-32" required>
-                <button type="submit">Update</button>
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white px-2 py-1 rounded text-sm">Update</button>
             </form>
 
             <!-- Form to delete a task -->
              <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Delete this task?')">
                 @csrf 
                 @method('DELETE') <!-- DELETE method -->
-                <button type="submit" class="text-red-500 hover:text-red-700">🗑</button>
+                <button type="submit" class="text-red-500 hover:text-red-700">Delete 🗑</button>
             </form>
             </div>
             </li>
