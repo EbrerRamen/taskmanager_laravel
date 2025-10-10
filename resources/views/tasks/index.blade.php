@@ -34,14 +34,14 @@
             <li class="flex justify-between items-center border-b py-2">
 
             <!-- Form to toggle task completion -->
-             <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+             <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="space-y-1">
                 @csrf 
                 @method('PATCH') <!-- PATCH method for updating -->
-                <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : 'hover:text-blue-600' }}">
+                <button type="submit" class="block w-full text-left {{ $task->is_completed ? 'line-through text-gray-400' : 'hover:text-blue-600' }}">
                     {{ $task->title }} <!-- Task tiitle --> 
                 </button>
-                <span class="text-sm {{ $task->due_date && \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-gray-500' }}">
-                    {{ $task->due_date ? 'Due: ' . \Carbon\Carbon::parse($task->duedate)->format('M d, Y') : 'No due date'}}
+                <span class="block text-sm {{ $task->due_date && \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-gray-500' }}">
+                    {{ $task->due_date ? 'Due: ' . \Carbon\Carbon::parse($task->due_date)->format('M d, Y') : 'No due date'}}
                 </span>
             </form>
 
@@ -60,7 +60,7 @@
              <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Delete this task?')">
                 @csrf 
                 @method('DELETE') <!-- DELETE method -->
-                <button type="submit" class="text-red-500 hover:text-red-700">Delete 🗑</button>
+                <button type="submit" class="text-red-500 hover:text-red-700">🗑</button>
             </form>
             </div>
             </li>
