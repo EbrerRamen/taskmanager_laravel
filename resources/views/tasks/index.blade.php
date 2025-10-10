@@ -45,6 +45,15 @@
                 </span>
             </form>
 
+            <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="mt-2">
+                @csrf 
+                @method('PATCH')
+                <input type="date" name="due_date" value="{{ $task->due_date }}" class="border rounded p-1 text-sm">
+                <button type="submit" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-sm">
+                    update
+                </button>
+            </form>
+
             <!-- Right-side buttons -->
             <div class="flex items-center space-x-2">
 
