@@ -40,7 +40,7 @@
                 <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : 'hover:text-blue-600' }}">
                     {{ $task->title }} <!-- Task tiitle --> 
                 </button>
-                <span class="text-sm text-gray-500 ml-2">
+                <span class="text-sm {{ $task->due_date && \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-gray-500' }}">
                     {{ $task->due_date ? 'Due: ' . \Carbon\Carbon::parse($task->duedate)->format('M d, Y') : 'No due date'}}
                 </span>
             </form>
