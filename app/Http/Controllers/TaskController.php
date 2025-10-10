@@ -17,12 +17,14 @@ class TaskController extends Controller
     public function store(Request $request){
         // Validate inpute (title is required)
         $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'due_date' => 'nullable|date',
         ]);
 
         // Create a new task in the database
         Task::create([
-            'title' => $request->title
+            'title' => $request->title,
+            'due_date' => $request->due_date,
         ]);
 
         return redirect()->back(); // Redirect back to the task list page
