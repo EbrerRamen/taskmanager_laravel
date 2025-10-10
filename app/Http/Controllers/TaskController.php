@@ -46,6 +46,11 @@ class TaskController extends Controller
             return redirect('/')->with('success', 'Task updated successfully');
         }
 
+        // If due_date provided, update it
+        if ($request->has('due_date')) {
+            $task->update(['due_date => $request->due_date']);
+        }
+
         // Otherwise, toggle completion
         $task->update([
             'is_completed' => !$task->is_completed
