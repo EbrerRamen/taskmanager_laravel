@@ -24,7 +24,7 @@
             class="flex-grow border border-gray-300 p-2 rounded-l" required>
 
             <input type="date" name="due_date" class="border border-gray-300 p-2 rounded">
-            
+
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r">Add</button>
         </form>
 
@@ -40,6 +40,9 @@
                 <button type="submit" class="{{ $task->is_completed ? 'line-through text-gray-400' : 'hover:text-blue-600' }}">
                     {{ $task->title }} <!-- Task tiitle --> 
                 </button>
+                <span class="text-sm text-gray-500 ml-2">
+                    {{ $task->due_date ? 'Due: ' . \Carbon\Carbon::parse($task->duedate)->format('M d, Y') : 'No due date'}}
+                </span>
             </form>
 
             <!-- Right-side buttons -->
