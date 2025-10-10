@@ -22,6 +22,9 @@
             @csrf <!-- CSRF token for security -->
             <input type="text" name="title" placeholder="Enter new task"
             class="flex-grow border border-gray-300 p-2 rounded-l" required>
+
+            <input type="date" name="due_date" class="border border-gray-300 p-2 rounded">
+            
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r">Add</button>
         </form>
 
